@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ======================================================================
+     2017-10-17 下午5:09:37
+
+     mi
+     编译门户通系统
+
+     hewenhui
+     ====================================================================== -->
+<project name="mi" default="build" basedir="D:\source_project\MI\mi">
+	<description>编译门户通系统</description>
+	<property name="javac.dir" value="webapp\WEB-INF\classes">
+	</property>
+	<property name="src.dir" value="src\main\java">
+	</property>
+	<property name="resource.dir" value="src\main\resources">
+	</property>
+	<property name="javac.lib" value="webapp\WEB-INF\lib">
+	</property>
+	<property name="java_home" value="C:\Program Files (x86)\Java\jdk1.6.0_39\bin" />
+
+	<target name="init">
+		<echo>
+			先清空目标路径${javac.dir}文件夹
+		</echo>
+		<delete dir="${javac.dir}" includeemptydirs="true">
+		</delete>
+		<mkdir dir="${javac.dir}" />
+	</target>
+	<!-- =================================
+          target: build
+         ================================= -->
+	<target name="build" depends="init" description="编译门户通系统">
+		<javac executable="${java_home}\javac.exe" fork="yes" srcdir="${src.dir}" destdir="${javac.dir}" encoding="UTF-8" source="1.6" target="1.6" debug="on">
+			<classpath>
+				<fileset dir="${javac.lib}">
+				</fileset>
+				<fileset dir="D:\source_project\apache-tomcat-6.0.45\lib">
+				</fileset>
+				<fileset dir="D:\source_project\Libs">
+				</fileset>
+
+			</classpath>
+		</javac>
+		<copy todir="${javac.dir}">
+			<fileset dir="${src.dir}">
+				<include name="**/*.xml" />
+				<include name="**/*.ftl" />
+				<include name="**/*.properties" />
+			</fileset>
+			<fileset dir="${resource.dir}">
+				<include name="**/*.xml" />
+				<include name="**/*.ftl" />
+				<include name="**/*.properties" />
+			</fileset>
+		</copy>
+
+	</target>
+
+
+
+</project>

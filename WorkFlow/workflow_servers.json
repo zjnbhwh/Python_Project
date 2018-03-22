@@ -1,0 +1,11 @@
+[
+  {
+    "ip": "10.19.3.61",
+    "port": 22,
+    "username": "weblogic",
+    "password": "3edc4rfv",
+    "release_dir": "/app/new_release/workflow",
+    "mkdirs":"/app/new_release/mkdirs.py",
+    "release":"/app/new_release/release_backup.py"
+  }
+]

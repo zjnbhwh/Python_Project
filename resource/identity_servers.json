@@ -1,0 +1,20 @@
+[
+  {
+    "ip": "10.28.31.31",
+    "port": 22,
+    "username": "weblogic",
+    "password": "weblogic",
+    "release_dir": "/app/new_release/identity",
+    "mkdirs":"/app/new_release/mkdirs.py",
+    "release":"/app/new_release/release_backup.py"
+  },
+  {
+    "ip": "10.28.31.35",
+    "port": 22,
+    "username": "weblogic",
+    "password": "weblogic",
+    "release_dir": "/app/new_release/identity",
+    "mkdirs":"/app/new_release/mkdirs.py",
+    "release":"/app/new_release/release_backup.py"
+  }
+]

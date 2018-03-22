@@ -1,0 +1,80 @@
+<project basedir="D:\source_project\git_esb\dubbo\com.sinatay.dubbo.frame.identity" default="build" name="identity">
+	<target name="init" description="">
+		<property name="name" value="identity" />
+		<property name="src" value="${basedir}/JavaSource/java" />
+		<property name="resource" value="${basedir}/JavaSource/resources" />
+		<property name="webapp" value="${basedir}/WebContent" />
+		<property name="lib" value="${webapp}/WEB-INF/lib" />
+		<property name="build.dir" value="${basedir}/build" />
+		<property name="build.webapp" value="${build.dir}/WebRoot" />
+		<property name="build.src" value="${build.dir}/src" />
+		<property name="build.dest" value="${build.webapp}/WEB-INF/classes" />
+
+		<path id="classpath">
+			<fileset dir="${lib}">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+	</target>
+
+	<target name="prepare" depends="clean" description="">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.webapp}" />
+		<mkdir dir="${build.src}" />
+		<mkdir dir="${build.dest}" />
+
+		<copy todir="${build.src}">
+			<fileset dir="${src}">
+				<exclude name="**/.copyarea.db" />
+				<include name="**/*" />
+			</fileset>
+			<fileset dir="${resource}">
+				<include name="**/*.xml" />
+				<include name="**/*.properties" />
+			</fileset>
+		</copy>
+
+		<copy todir="${build.webapp}">
+			<fileset dir="${webapp}">
+				<exclude name="**/classes/" />
+				<exclude name="**/.copyarea.db" />
+				<exclude name="**/servlet-api.jar" />
+				<include name="**/*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="build" depends="prepare" description="">
+		<javac srcdir="${build.src}" destdir="${build.dest}" encoding="utf-8" source="1.7" target="1.7" 
+			includeantruntime="on" fork="yes" debug="true" debuglevel="source,lines,vars">
+			<classpath refid="classpath" />
+		</javac>
+		<copy todir="${build.dest}">
+			<fileset dir="${build.src}">
+				<include name="**/*.xml" />
+				<include name="**/*.ftl" />
+				<include name="**/*.properties" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="war" depends="build" description="">
+		<war warfile="${build.dir}/${name}.war" webxml="${build.webapp}/WEB-INF/web.xml">
+			<fileset dir="${build.webapp}" />
+		</war>
+		<delete dir="${build.src}" />
+		<delete dir="${build.webapp}" />
+	</target>
+
+	<target name="clean" depends="init" description="">
+		<delete dir="${build.dir}" />
+	</target>
+
+	<target name="native2ascii" depends="init">
+		<native2ascii encoding="UTF-8" 
+			src="${src}/com/sinatay/core/system/i18n" 
+			dest="${src}/com/sinatay/core/system/i18n" 
+			includes="*.txt" 
+			ext="_zh.properties" />
+	</target>
+</project>

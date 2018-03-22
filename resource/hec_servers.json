@@ -1,0 +1,20 @@
+[
+  {
+    "ip": "10.28.31.95",
+    "port": 22,
+    "username": "weblogic",
+    "password": "ofprd_hec",
+    "release_dir": "/bea/hec/release/eam",
+    "mkdirs":"/bea/hec/release/mkdirs.py",
+    "release":"/bea/hec/release/release_backup.py"
+  },
+  {
+    "ip": "10.28.31.96",
+    "port": 22,
+    "username": "weblogic",
+    "password": "ofprd_hec",
+    "release_dir": "/bea/hec/release/eam",
+    "mkdirs":"/bea/hec/release/mkdirs.py",
+    "release":"/bea/hec/release/release_backup.py"
+  }
+]

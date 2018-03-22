@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ======================================================================
+     2017-10-17 下午5:09:37
+
+     eam
+     编译资产系统
+
+     hewenhui
+     ====================================================================== -->
+<project name="eam" default="build" basedir="D:\source_project\git_eam\eam">
+	<description>编译资产系统</description>
+	<property name="javac.dir" value="WebRoot\WEB-INF\classes">
+	</property>
+	<property name="src.dir" value="JavaSource\src">
+	</property>
+	<property name="resource.dir" value="JavaSource\resources">
+	</property>
+	<property name="javac.lib" value="WebRoot\WEB-INF\lib">
+	</property>
+
+	<target name="init">
+		<echo>
+			先清空目标路径${javac.dir}文件夹
+		</echo>
+		<delete dir="${javac.dir}" includeemptydirs="true">
+		</delete>
+		<mkdir dir="${javac.dir}" />
+	</target>
+	<!-- =================================
+          target: build
+         ================================= -->
+	<target name="build" depends="init" description="编译资产系统">
+		<javac srcdir="${src.dir}" destdir="${javac.dir}" encoding="GBK" source="1.6" target="1.6">
+			<classpath>
+				<fileset dir="${javac.lib}">
+				</fileset>
+			</classpath>
+		</javac>
+		<copy todir="${javac.dir}">
+			<fileset dir="${src.dir}">
+				<include name="**/*.xml" />
+				<include name="**/*.ftl" />
+				<include name="**/*.properties" />
+			</fileset>
+		</copy>
+		<copy todir="${javac.dir}">
+			<fileset dir="${resource.dir}">
+				<include name="**/*.xml" />
+				<include name="**/*.ftl" />
+				<include name="**/*.properties" />
+			</fileset>
+		</copy>
+	</target>
+
+
+
+</project>

@@ -1,0 +1,11 @@
+[
+  {
+    "ip": "10.21.10.10",
+    "port": 22,
+    "username": "weblogic",
+    "password": "1qaz@wsx",
+    "release_dir": "/bea/application/release/eam",
+    "mkdirs":"/bea/application/release/mkdirs.py",
+    "release":"/bea/application/release/release_backup.py"
+  }
+]
